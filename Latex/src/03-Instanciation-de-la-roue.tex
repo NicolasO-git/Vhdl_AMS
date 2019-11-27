@@ -1,0 +1,25 @@
+\section{Analyse instanciation de la roue}
+Dans cette partie du TP nous avons relier le laser de pompe (en bas) avec la fibre verte C à l'atténuateur 3 (en haut) et récupéré la sortie avec la fibre verte A. Une fois le gain ajusté, pour obtenir une tension comprise entre 300 mV et 350 mV avec un courant injecté de 100 mA, nous avons repéré une tension de 320  mV.
+
+Une fois le gain réglé nous avons fait varier le courant de 0 à 50 mA avec un pas de 10 puis de 50 à 175 mA par un pas de 25 mA pour en relever la tension délivrée par le détecteur. Nous avons ensuite convertis l'échelle de tension en puissance pour déterminer un courant de seuil pour la pompe de $33 mA$.
+
+\begin{center}
+    \begin{tabular}{|l|c|r|}
+      \hline
+      Courant (mA) & Tension (mV) & Puissance (mW) \\
+      \hline
+      0 & 0 & 0 \\
+      10 & 0 & 0 \\
+      20 & 0 & 0 \\
+      30 & 15 & 1.5253 \\
+      40 & 60 & 6.1016 \\
+      50 & 100 & 10.1694 \\
+      75 & 210 & 21.3559 \\
+      100 & 320 & 32.5423 \\
+      125 & 460 & 46.7796 \\
+      \hlc[yellow]{150} & \hlc[yellow]{590} & \hlc[yellow]{60} \\
+      175 & 720 & 73.2203 \\\\
+      \hline
+    \end{tabular}
+\end{center}
+Le même conversion a été utilisé pour effectuer la transformation de l'échelle de tension vers l'échelle de puissance.
