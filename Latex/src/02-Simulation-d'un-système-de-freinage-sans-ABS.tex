@@ -32,13 +32,79 @@ Dans l'entité du véhicule nous avons donc à définir certaines quantités qui
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/vehicule.png}
-    \caption{Code VHDL Architecture A}
+    \caption{Code VHDL Architecture A - Véhicule}
+\end{figure}
+
+Pour la première partie, véhicule il faudra mettre en place un terminal T1 ayant pour type "Translational\_velocity". Celui-ci sera plus tard rélié au Terminal "Roue", du même type, pour nous permettre la visualisation de la vitesse du véhicule.
+\newpage
+Avec l'aide du logiciel ModelSim nous pouvons simuler le temps de freinage nécessaire à l'arrêt du véhicule lorsqu'on lui applique une force de 2800 N au terminal T1.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Instanciation_vehicule.jpg}
+    \caption{Simulation Terminal T1 Force et Temps pour le freinage}
 \end{figure}
 
 \subsection{Analyse instanciation roue}
-a
+Une fois le véhicule instancié on nous demande d'ajouter le système "Roue". Dans cette partie on déclare en code la partie générique suivante :\\
+\begin{itemize}
+    \item $route       \rightarrow$ Etat de la route (mouillée, seche).
+    \item $m       \rightarrow$ Masse vehicule.
+    \item $rR        \rightarrow$ Rayon de la roue.
+    \item $IR  \rightarrow$ Inertie de la roue.
+    \item $mu0_D \rightarrow$ Coéfficient adhérence sans glissement sur sol sec.
+    \item $As \rightarrow$ Facteur de decroissance de l'adherence.
+    \item $mu0_W \rightarrow$ Coéfficient adhérence sans glissement sur sol mouillé.
+    \item $Vc \rightarrow$ Caracteristique de la surface.
+\end{itemize}
+\newpage
+
+Dans cette partie du code il y aura deux terminaux à instancier au niveau de la roue :\\
+
+\begin{itemize}
+    \item $veh  \rightarrow $ De type "translational\_velocity".
+    \item $frein    \rightarrow $ De type "rotational\_velocity".
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Roue.png}
+    \caption{Code VHDL Architecture C - Roue}
+\end{figure}
+
+\newpage
+
+Une fois la "Roue" implémentée on retrouver sur ModelSim avec deux Terminaux, T2 étant le dernier terminal instancié et qui représente le terminal d'entrée de "Roue". On observe grâce à ModelSimla vitesse rotationnelle de "Roue" ainsi que la vitesse du véhicule. On observe que la vitesse de "Roue" chute brusquement avant de réduire linéairement comme la vitesse du véhicule.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=1.1\textwidth]{images/Instanciation_roue.jpg}
+    \caption{Simulation Terminal T2 et T1}
+\end{figure}
+
 \subsection{Analyse instanciation frein}
-a
+Une fois le véhicule et la Roue instanciés on nous demande d'ajouter le système "Frein". Dans cette partie on déclare en code la partie générique suivante :\\
+\begin{itemize}
+    \item $coef_fric    \rightarrow$ Coéfficient de friction des plaquettes.
+    \item $S    \rightarrow$ Surface piston = 10 cm2.
+    \item $R   \rightarrow$ Rayon moyen du disque.
+\end{itemize}
+
+\newpage
+
+Dans cette partie du code il y aura deux terminaux à instancier au niveau de la du Frein :\\
+\begin{itemize}
+    \item $Roue    \rightarrow$ Type "rotational\_velocity".
+    \item $MC    \rightarrow$ Type "fluidic" à l'entrée du Frein.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/Instanciation_frein.jpg}
+    \caption{Code VHDL Architecture D - Roue}
+\end{figure}
+
+Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression.
 \subsection{Analyse instanciation maître cylindre}
 a
 \subsection{Modélisation du régulateur de pression}
