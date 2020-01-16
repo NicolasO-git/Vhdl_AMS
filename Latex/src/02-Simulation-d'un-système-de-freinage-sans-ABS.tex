@@ -12,7 +12,7 @@ Il est demandé d'instancier étapes par étapes différents blocs avec leurs te
 \newpage
 
 \subsection{Analyse instanciation véhicule }
-Dans cette première partie nous devons instancier le véhicule fournit dans les fichiers du projet. Sur la Figure 2 on peut voir le schéma bloc qu'il faut instancier son entité en VHDL-AMS.
+Dans cette première partie nous devons instancier le véhicule fournit dans les fichiers du projet. Sur la Figure 2 on peut voir le schéma bloc qu'il faut instancier et décrire par la suite son entitée en VHDL-AMS.
 
 \begin{figure}[h]
     \centering
@@ -20,7 +20,7 @@ Dans cette première partie nous devons instancier le véhicule fournit dans les
     \caption{Instanciation du véhicule avec son terminal}
 \end{figure}
 
-Dans l'entité du véhicule nous avons donc à définir certaines quantités qui nous permettra de résoudre certaines équations :\\
+Dans l'entitée du véhicule nous avons donc à définir certaines quantités qui va nous permettra de résoudre certaines équations :\\
 
 \begin{itemize}
         \item $m        \rightarrow$ Masse véhicule.
@@ -74,7 +74,7 @@ Dans cette partie du code il y aura deux terminaux à instancier au niveau de la
 
 \newpage
 
-Une fois la "Roue" implémentée on retrouver sur ModelSim avec deux Terminaux, T2 étant le dernier terminal instancié et qui représente le terminal d'entrée de "Roue". On observe grâce à ModelSimla vitesse rotationnelle de "Roue" ainsi que la vitesse du véhicule. On observe que la vitesse de "Roue" chute brusquement avant de réduire linéairement comme la vitesse du véhicule.
+Une fois la "Roue" implémentée on se retrouve sur ModelSim avec deux Terminaux, T2 étant le dernier terminal instancié qui représente le terminal d'entrée de "Roue" et T1 son Terminal de sortie. On observe grâce à ModelSim la vitesse rotationnelle de "Roue" ainsi que la vitesse du véhicule. On observe que la vitesse de "Roue" chute brusquement avant de réduire linéairement comme la vitesse du véhicule.
 
 \begin{figure}[h]
     \centering
@@ -90,13 +90,16 @@ Une fois le véhicule et la Roue instanciés on nous demande d'ajouter le systè
     \item $R   \rightarrow$ Rayon moyen du disque.
 \end{itemize}
 
-\newpage
-
 Dans cette partie du code il y aura deux terminaux à instancier au niveau de la du Frein :\\
+
 \begin{itemize}
     \item $Roue    \rightarrow$ Type "rotational\_velocity".
     \item $MC    \rightarrow$ Type "fluidic" à l'entrée du Frein.
-\end{itemize}
+\end{itemize}\\
+
+Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression appliquée à son entrée. On définit une quatité de Pression (across) et débit (Through) pour le nouvel Terminal. On vient ensuite fixer la valeur de pression à 18 MPa pour pouvoir résoudre l'équation.
+
+\newpage
 
 \begin{figure}[h]
     \centering
@@ -104,7 +107,9 @@ Dans cette partie du code il y aura deux terminaux à instancier au niveau de la
     \caption{Code VHDL Architecture D - Roue}
 \end{figure}
 
-Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression.
+
+\newpage
+
 \subsection{Analyse instanciation maître cylindre}
 a
 \subsection{Modélisation du régulateur de pression}
