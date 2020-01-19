@@ -174,10 +174,17 @@ On constate avec l'outil de modélisation que lorsque nous appliquons une préss
 Pour la suite de cette partie on nous demande d'intégrer un temps de réaction du conducteur à notre entrée, permettant d'obtenir une simulation plus réaliste du système. Pour cela nous ajoutons un signal de type réel qui prendra la valeur de 180 N après 100 ms et par la suite affecter à ce signal une quatité de "Force" qui évoluera linéairement de 0 à 180 durant 500 ms.
 \begin{figure}[h]
     \centering
+    \includegraphics[width=\textwidth]{images/cinq.png}
+    \caption{Intégration rampe au schéma bloc}
+\end{figure}
+
+
+\newpage
+\begin{figure}[h]
+    \centering
     \includegraphics[width=\textwidth]{images/cond.png}
     \caption{Condition rampe entrée Maître cylibdre}
 \end{figure}
-\newpage
 
 En ajoutant cette condition nous pouvant oberser avec l'outil de simulation la nouvelle évolution de la vitesse du véhicule, qui maitenant, ne décroit plus linéairement. On constate que le véhicule met plus de temps pour freiner entièrement son déplacement, ce qui peut être expliqué du fait que tant que la force maximum du frein n'est pas appliquée le temps de freinage sera plus long.
 
