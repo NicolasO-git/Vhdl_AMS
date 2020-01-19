@@ -12,7 +12,7 @@ Il est demandé d'instancier étapes par étapes différents blocs avec leurs te
 \newpage
 
 \subsection{Analyse instanciation véhicule }
-Dans cette première partie nous devons instancier le véhicule fournit dans les fichiers du projet. Sur la Figure 2 on peut voir le schéma bloc qu'il faut instancier et décrire par la suite son entitée en VHDL-AMS.
+Dans cette première partie nous devons instancié le véhicule fournit dans les fichiers du projet. Sur la Figure 2 on peut voir le schéma bloc qu'il faut instancier et décrire par son entitée en VHDL-AMS.
 
 \begin{figure}[h]
     \centering
@@ -20,11 +20,11 @@ Dans cette première partie nous devons instancier le véhicule fournit dans les
     \caption{Instanciation du véhicule avec son terminal}
 \end{figure}
 
-Dans l'entitée du véhicule nous avons donc à définir certaines quantités qui va nous permettra de résoudre certaines équations :\\
+Dans l'entitée du véhicule nous avons donc à définir certaines quantités qui va nous permettra de résoudre certaines équations. Les paramètres d'entrées de notre première équation sont les suivants :\\
 
 \begin{itemize}
         \item $m        \rightarrow$ Masse véhicule.
-        \item $Cx       \rightarrow$ Coefficient aérodynamique.
+        \item $Cx       \rightarrow$ Coéfficient aérodynamique.
         \item $S        \rightarrow$ Surface Frontale.
         \item $V\_init  \rightarrow$ Vitesse initiale du vehicule.
 \end{itemize}
@@ -46,7 +46,18 @@ Avec l'aide du logiciel ModelSim nous pouvons simuler le temps de freinage néce
 \end{figure}
 
 \subsection{Analyse instanciation roue}
-Une fois le véhicule instancié on nous demande d'ajouter le système "Roue". Dans cette partie on déclare en code la partie générique suivante :\\
+
+Dans cette seconde partie nous devons instancier la roue fournit dans les fichiers du projet. Sur la Figure 5 on peut voir le schéma bloc qu'il faut instancier et décrire par la suite son entitée en VHDL-AMS.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/deux.png}
+    \caption{Instanciation du véhicule avec son terminal}
+\end{figure}
+
+\newpage
+
+Une fois le véhicule instancié on nous demande d'ajouter le système "Roue". Dans cette partie on déclare en code la partie générique qui va nous permettre de résoudre l'équation suivante ayant pour entrées ces paramètres :\\
 \begin{itemize}
     \item $route       \rightarrow$ Etat de la route (mouillée, seche).
     \item $m       \rightarrow$ Masse vehicule.
@@ -57,7 +68,7 @@ Une fois le véhicule instancié on nous demande d'ajouter le système "Roue". D
     \item $mu0_W \rightarrow$ Coéfficient adhérence sans glissement sur sol mouillé.
     \item $Vc \rightarrow$ Caracteristique de la surface.
 \end{itemize}
-\newpage
+
 
 Dans cette partie du code il y aura deux terminaux à instancier au niveau de la roue :\\
 
@@ -74,15 +85,26 @@ Dans cette partie du code il y aura deux terminaux à instancier au niveau de la
 
 \newpage
 
-Une fois la "Roue" implémentée on se retrouve sur ModelSim avec deux Terminaux, T2 étant le dernier terminal instancié qui représente le terminal d'entrée de "Roue" et T1 son Terminal de sortie. On observe grâce à ModelSim la vitesse rotationnelle de "Roue" ainsi que la vitesse du véhicule. On observe que la vitesse de "Roue" chute brusquement avant de réduire linéairement comme la vitesse du véhicule.
+Une fois la "Roue" implémentée on se retrouve sur ModelSim avec deux Terminaux, T2 étant le dernier terminal instancié qui représente le terminal d'entrée de "Roue" et T1 son Terminal de sortie. On observe grâce à ModelSim la vitesse rotationnelle de "Roue" ainsi que la vitesse du véhicule. On constate que la vitesse de "Roue" chute brusquement avant de réduire linéairement comme pour la vitesse du véhicule.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=1.1\textwidth]{images/Instanciation_roue.jpg}
+    \includegraphics[width=\textwidth]{images/Frein.png}
     \caption{Simulation Terminal T2 et T1}
 \end{figure}
 
 \subsection{Analyse instanciation frein}
+
+Dans la troisème partie du tp nous devons instancier le frein au terminal T2, fournit dans les fichiers du projet. Sur la Figure 8 on peut voir le schéma bloc qu'il faut instancier et décrire par la suite son entitée en VHDL-AMS.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/trois.png}
+    \caption{Instanciation du véhicule avec son terminal}
+\end{figure}
+
+\newpage 
+
 Une fois le véhicule et la Roue instanciés on nous demande d'ajouter le système "Frein". Dans cette partie on déclare en code la partie générique suivante :\\
 \begin{itemize}
     \item $coef_fric    \rightarrow$ Coéfficient de friction des plaquettes.
@@ -97,21 +119,75 @@ Dans cette partie du code il y aura deux terminaux à instancier au niveau de la
     \item $MC    \rightarrow$ Type "fluidic" à l'entrée du Frein.
 \end{itemize}
 
-Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression appliquée à son entrée. On définit une quatité de Pression (across) et débit (Through) pour le nouvel Terminal. On vient ensuite fixer la valeur de pression à 18 MPa pour pouvoir résoudre l'équation.
-
-\newpage
+Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression appliquée à son entrée. On définit une quantité de Pression (across) et un débit (Through) pour le nouveau Terminal. On vient ensuite fixer la valeur de pression à 18 MPa pour pouvoir résoudre l'équation.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.85\textwidth]{images/Instanciation_frein.jpg}
-    \caption{Code VHDL Architecture D - Roue}
+    \includegraphics[width=0.95\textwidth]{images/Instanciation_frein.jpg}
+    \caption{Code VHDL Architecture D - Roue et Frein}
 \end{figure}
-
-
 \newpage
+Sur la figure 10 on peut observer grâce à la simulation que lorsque l'on applique une pression de 18 MPa au frein nous avons en sortie la vitesse qui décroit exactement comme à l'instanciation du véhicule ce qui nous permet de conclure que le frein est implémenté de la bonne manière.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Instanciation_vehicule_roue_frein.jpg}
+    \caption{Simulation Terminaux T3 T2 et T1}
+\end{figure} 
 
 \subsection{Analyse instanciation maître cylindre}
-a
+Dans la quatrième partie nous allons instancier le maître cylindre qui va permettre de transmettre la pression vers le terminal T3. Sur la Figure 11 on peut voir le schéma bloc qu'il faut instancier et décrire par la suite son entitée en VHDL-AMS.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.85\textwidth]{images/quatre.png}
+    \caption{Instanciation du véhicule avec son terminal}
+\end{figure}
+\newpage
+
+Pour l'instanciation et la résolution du système maître cylindre  il sera nécessaire de compléter et de modifier le fichier fournit en TP. Dans cette partie on déclare en code la partie générique suivante :\\
+\begin{itemize}
+    \item $S    \rightarrow$ Coéfficient de friction des plaquettes.
+    \item $S    \rightarrow$ Surface piston = 10 cm2.
+\end{itemize}
+
+Dans cette partie du code il y aura deux terminaux à instancier au niveau de la du Frein :
+
+\begin{itemize}
+    \item $Hyd    \rightarrow$ Type "fluidic" qui représente la pression en entrée du frein.
+    \item $Force    \rightarrow$ Qui est une quantité réel exercée par le conducteur sur la pédale de frein.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/MC.png}
+    \caption{Code VHDL Architecture E - Maître cylindre}
+\end{figure}
+Dans cette nouvelle entité, maître cylindre, elle nous permet l'injection de la pression dans le frein en fonction de la force exercée par le conducteur sur la pédale de frein. Dnas ce nouveau cas Force étant un réel il est nécessaire de déclarer une quantité de type réel contrairement aux précédentes déclaration des Terminaux ultérieurs.
+\newpage
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Instanciation_vehicule_roue_frein_Mc.jpg}
+    \caption{Simulation du Terminal 4 - Maître cylindre}
+\end{figure}
+On constate avec l'outil de modélisation que lorsque nous appliquons une préssion de 180 N sur la pédale de frein nous obtenons un même temps de freinage et une même pression sur le frein que sur l'Implémentation précédente. Cette simulation nous permet de montrer la bonne implémentation de la partie correspondate au maître cylindre.
+
+Pour la suite de cette partie on nous demande d'intégrer un temps de réaction du conducteur à notre entrée, permettant d'obtenir une simulation plus réaliste du système. Pour cela nous ajoutons un signal de type réel qui prendra la valeur de 180 N après 100 ms et par la suite affecter à ce signal une quatité de "Force" qui évoluera linéairement de 0 à 180 durant 500 ms.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/cond.png}
+    \caption{Condition rampe entrée Maître cylibdre}
+\end{figure}
+\newpage
+
+En ajoutant cette condition nous pouvant oberser avec l'outil de simulation la nouvelle évolution de la vitesse du véhicule, qui maitenant, ne décroit plus linéairement. On constate que le véhicule met plus de temps pour freiner entièrement son déplacement, ce qui peut être expliqué du fait que tant que la force maximum du frein n'est pas appliquée le temps de freinage sera plus long.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/Instanciation_vehicule_roue_frein_Mc_rampe.jpg}
+    \caption{Simulation avec temps de réaction sur le freinage}
+\end{figure}
+
+\newpage
 \subsection{Modélisation du régulateur de pression}
 a
 \newpage
