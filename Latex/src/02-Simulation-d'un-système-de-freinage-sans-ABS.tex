@@ -196,5 +196,24 @@ En ajoutant cette condition nous pouvant oberser avec l'outil de simulation la n
 
 \newpage
 \subsection{Modélisation du régulateur de pression}
-a
+
+Pour conclure ces premières étapes avant d'instancier un système d'ABS on nous demande d'ajouter un régulateur de pression grâce à un signal de commande. Pour cela on utilisera l'équation suivante dans le domaine de Laplace, pour réguler la pression :
+\[ \frac{Pout}{Pin} = \frac{V}{5 \times (1 + 0.002p)} \]
+
+Ce qui nous permet d'obtenir dans le domaine temporel une nouvelle équation utilisable cette fois-ci pour le code VHDL :
+
+\[ P_{out} + 0.002 \times \frac{dPout}{dt} = \frac{V \times Pin}{5} \]
+
+Ce qui nous permet d'ajouter un nouveau bloc à notre schéma bloc système qui aura pour entrée les trois paramètres suivants :
+\begin{itemize}
+    \item $T_{Pin}    \rightarrow$ Pression d'entrée qui vient du maître cylindre.
+    \item $T_{Pout}    \rightarrow$ Pression de sortie en entrée du frein.
+    \item $TV   \rightarrow$ Tension correspondate à la commande du régulateur.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/sb1.png}
+    \caption{Ajout bloc Régulateur de pression}
+\end{figure}
 \newpage
