@@ -90,12 +90,12 @@ Une fois le véhicule et la Roue instanciés on nous demande d'ajouter le systè
     \item $R   \rightarrow$ Rayon moyen du disque.
 \end{itemize}
 
-Dans cette partie du code il y aura deux terminaux à instancier au niveau de la du Frein :\\
+Dans cette partie du code il y aura deux terminaux à instancier au niveau de la du Frein :
 
 \begin{itemize}
     \item $Roue    \rightarrow$ Type "rotational\_velocity".
     \item $MC    \rightarrow$ Type "fluidic" à l'entrée du Frein.
-\end{itemize}\\
+\end{itemize}
 
 Dans cette nouvelle instance nous venons d'implémenter le "Frein" permettant l'obtention de la vitesse de rotation du disque dans le terminal 2 en fonction de la pression appliquée à son entrée. On définit une quatité de Pression (across) et débit (Through) pour le nouvel Terminal. On vient ensuite fixer la valeur de pression à 18 MPa pour pouvoir résoudre l'équation.
 
